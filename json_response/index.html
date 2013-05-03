@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta name="generator" content="WZ EDITOR 5.0">
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<link rev="made" href="mailto:your@email.ne.jp">
+<style>
+<!--
+	h1.title { font: bolder xx-large Arial,sans-serif; }
+//-->
+</style>
+<title>JSONのレスポンスをPHPから返す</title>
+
+<script type="text/JavaScript" src="./jquery-1.9.1.js"></script>
+
+</head>
+<body>
+
+<script type="text/JavaScript">
+	jQuery(document).ready(function()
+	{
+		$("div#message").text("開始");
+		var	options = {
+			type:		'GET',
+			url:		'getresponse.php',
+			datatype:	'json',
+			success:	function(json)
+			{
+				$("div#message").text("成功しました");
+
+				var	params;
+				for(var i in json)
+				{
+					params += "("+ json[i] + ")";
+				}
+
+				alert("取得したJSON " + params );
+			},
+			error:		function(xhr, status, error)
+			{
+				alert("失敗[" + status +"]("+ error +")" );
+			}
+		};
+		$.ajax(options);
+	});
+</script>
+
+<div id="message"></div>
+
+
+</body>
+</html>
