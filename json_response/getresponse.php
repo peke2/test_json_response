@@ -10,8 +10,10 @@
 
 	$json_data = json_encode($data);
 
-header('Content-type: text/javascript; charset=utf-8');
-echo "(".$json_data.")";
-//echo $json_data;			//	そのまま返すとajaxのコールバックで「パース失敗」のエラーが返される
+//header('Content-type: text/javascript; charset=utf-8');
+//echo "(".$json_data.")";
+//	直接JSON形式として返せばOKっぽい
+header('Content-type: application/json; charset=utf-8');
+echo $json_data;
 
 ?>
