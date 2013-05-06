@@ -23,18 +23,32 @@
 		var	options = {
 			type:		'GET',
 			url:		'getresponse.php',
-			datatype:	'json',
-			success:	function(json)
+			datatype:	'jsonp',
+			success:	function(data, status, xhr)
 			{
-				$("div#message").text("成功しました");
+				var	serialized_json = data;
 
+				$("div#message").text("成功しました");
+				/*
 				var	params;
 				for(var i in json)
 				{
 					params += "("+ json[i] + ")";
 				}
+				*/
 
-				alert("取得したJSON " + params );
+				var	json = eval(serialized_json);
+			//	var	test_string = '{"text":"テスト文字列","value":5,"url":"http:\/\/google.com"}';
+			//	var	json = jQuery.parseJSON(test_string);
+
+				alert("テスト");
+
+			//	alert("取得したJSON " + params );
+				alert(
+					"text=>[" + json.text +"]\n" +
+					"value=>[" + json.value +"]\n" +
+					"url=>[" + json.url +"]\n"
+				);
 			},
 			error:		function(xhr, status, error)
 			{

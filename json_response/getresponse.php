@@ -12,5 +12,6 @@
 
 header('Content-type: text/javascript; charset=utf-8');
 echo "(".$json_data.")";
+//echo $json_data;			//	そのまま返すとajaxのコールバックで「パース失敗」のエラーが返される
 
 ?>
